@@ -1,0 +1,3 @@
+/Users/geraldjones/Desktop/PersonalProjects/RayTracerV2/cmake-build-release/CMakeFiles/RayTracerV2.dir
+/Users/geraldjones/Desktop/PersonalProjects/RayTracerV2/cmake-build-release/CMakeFiles/edit_cache.dir
+/Users/geraldjones/Desktop/PersonalProjects/RayTracerV2/cmake-build-release/CMakeFiles/rebuild_cache.dir
