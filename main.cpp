@@ -1,12 +1,11 @@
 #include <iostream>
-#include "point.h"
+#include "mytuple.h"
 
-using namespace std;
+//using namespace std;
 
 int main() {
-    point p(1, 2, 2);
-    // p.e[0] = 1.0f;
-    p.print();
+    MyTuple p(4.3, -4.2, 3.1, 1.0);
+    MyTuple v(4.3, -4.2, 3.1, 0.0);
 
     return 0;
 }
