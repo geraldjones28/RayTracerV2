@@ -26,17 +26,19 @@ class MyTuple {
         e[0] = x; e[1] = y; e[2] = z; e[3] = w;
     }
 
+    // Getter functions to call the components of the tuple easily
     inline float x() const { return e[0]; }
     inline float y() const { return e[1]; }
     inline float z() const { return e[2]; }
     inline float w() const { return e[3]; }
 
+    // Function to print out all components of tuple
     void print() const {
         cout << "(" << x() << ", " << y() << ", " << z() << ", " << w() << ")\n";
     }
 };
 
-// A function to test whether two tuples are equal to each other based on an EPSILON
+// Function to test whether two tuples are equal to each other based on an EPSILON
 inline const float EPSILON = 1e-5f;
 inline bool equal(const MyTuple& a, const MyTuple& b) {
     return ((fabs(a.x() - b.x()) < EPSILON) &&
