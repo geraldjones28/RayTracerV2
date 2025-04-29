@@ -6,6 +6,7 @@
 #define MYTUPLE_H
 
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -33,7 +34,14 @@ class MyTuple {
     void print() const {
         cout << "(" << x() << ", " << y() << ", " << z() << ", " << w() << ")\n";
     }
-
 };
+
+// A function to test whether two tuples are equal to each other based on an EPSILON
+inline const float EPSILON = 1e-5f;
+inline bool equal(const MyTuple& a, const MyTuple& b) {
+    return ((fabs(a.x() - b.x()) < EPSILON) &&
+            (fabs(a.y() - b.y()) < EPSILON) &&
+            (fabs(a.z() - b.z()) < EPSILON));
+}
 
 #endif //MYTUPLE_H
