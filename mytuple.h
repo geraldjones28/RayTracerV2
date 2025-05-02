@@ -53,12 +53,29 @@ inline bool operator!=(const MyTuple& a, const MyTuple& b) {
 // Function to add two tuples together. Cannot add two points.
 inline MyTuple operator+(const MyTuple& a, const MyTuple& b) {
     if (a.w() == 1 && b.w() == 1) {
-        return a;
+        cerr << "Error: Cannot add two points. \n";
+        return {};
     }
     return {a.x() + b.x(),
                a.y() + b.y(),
                a.z() + b.z(),
                a.w() + b.w()};
+}
+
+// Function to subtract two tuples together
+inline MyTuple operator-(const MyTuple& a, const MyTuple& b) {
+    return {a.x() - b.x(),
+               a.y() - b.y(),
+               a.z() - b.z(),
+               a.w() - b.w()};
+}
+
+// Function to negate a tuple
+inline MyTuple operator-(const MyTuple& a) {
+    return {-a.x(),
+               -a.y(),
+               -a.z(),
+               -a.w()};
 }
 
 #endif //MYTUPLE_H
