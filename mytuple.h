@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <cassert>
 
 using namespace std;
 
@@ -53,9 +54,9 @@ inline bool operator!=(const MyTuple& a, const MyTuple& b) {
 // Function to add two tuples together. Cannot add two points.
 inline MyTuple operator+(const MyTuple& a, const MyTuple& b) {
     if (a.w() == 1 && b.w() == 1) {
-        cerr << "Error: Cannot add two points. \n";
-        return {};
+        throw logic_error("Cannot add two points.");
     }
+
     return {a.x() + b.x(),
                a.y() + b.y(),
                a.z() + b.z(),
@@ -76,6 +77,34 @@ inline MyTuple operator-(const MyTuple& a) {
                -a.y(),
                -a.z(),
                -a.w()};
+}
+
+// Function to perform scalar multiplication on a vector
+inline MyTuple operator*(const MyTuple& a, float s) {
+    if (a.w() == 1) {
+        throw logic_error("You should not scale a point (w = 1)");
+    }
+
+    return {
+        a.x() * s,
+        a.y() * s,
+        a.y() * s,
+        0.0f // preserve vector
+    };
+}
+
+// Function to perform scalar division on a vector
+inline MyTuple operator/(const MyTuple& a, float s) {
+    if (a.w() == 1) {
+        throw logic_error("You should not scale a point (w = 1)");
+    }
+
+    return {
+            a.x() / s,
+            a.y() / s,
+            a.z() / s,
+           0.0f // preserve vector
+    };
 }
 
 #endif //MYTUPLE_H
