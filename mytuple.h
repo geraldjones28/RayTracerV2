@@ -15,11 +15,11 @@ using namespace std;
 // 'w' = 0 means it's a vector.
 class MyTuple {
   public:
-    // An fixed array to store components of tuple
+    // A fixed array to store components of tuple
     float e[4];
 
     // Default Constructor
-    MyTuple() {}
+    MyTuple() = default;
 
     // Constructor storing components (x,y,z,w) into e
     MyTuple(const float x, const float y, const float z, const float w) {
@@ -39,11 +39,26 @@ class MyTuple {
 };
 
 // Function to test whether two tuples are equal to each other based on an EPSILON
-inline const float EPSILON = 1e-5f;
-inline bool equal(const MyTuple& a, const MyTuple& b) {
+inline constexpr float EPSILON = 1e-5f;
+inline bool operator==(const MyTuple& a, const MyTuple& b) {
     return ((fabs(a.x() - b.x()) < EPSILON) &&
             (fabs(a.y() - b.y()) < EPSILON) &&
             (fabs(a.z() - b.z()) < EPSILON));
+}
+// Function to test whether two tuples are equal to each other based on the == overloaded operator
+inline bool operator!=(const MyTuple& a, const MyTuple& b) {
+    return !(a == b);
+}
+
+// Function to add two tuples together. Cannot add two points.
+inline MyTuple operator+(const MyTuple& a, const MyTuple& b) {
+    if (a.w() == 1 && b.w() == 1) {
+        return a;
+    }
+    return {a.x() + b.x(),
+               a.y() + b.y(),
+               a.z() + b.z(),
+               a.w() + b.w()};
 }
 
 #endif //MYTUPLE_H

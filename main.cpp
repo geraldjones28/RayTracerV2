@@ -4,13 +4,25 @@
 using namespace std;
 
 int main() {
-    MyTuple p(4.3, -4.2, 3.1, 1.0);
-    MyTuple v(4.3, -4.2, 3.1, 0.0);
-    if (equal(p, v)) {
+    const MyTuple p(3, -2, 5, 1);
+    const MyTuple v(-2, 3, 1, 0);
+
+
+
+    // Addition Test Case
+    /*
+    const MyTuple test = p + v;
+    test.print();
+    */
+
+    // Equal Test Case
+    /*
+    if (p == v) {
         cout << "They are equal!" << endl;
     } else {
         cout << "They are NOT equal!" << endl;
     }
+    */
 
     return 0;
 }
