@@ -27,6 +27,11 @@ class MyTuple {
         e[0] = x; e[1] = y; e[2] = z; e[3] = w;
     }
 
+    // Constructor to create a vector, not needing to provide the w component
+    MyTuple(const float x, const float y, const float z) {
+        e[0] = x; e[1] = y; e[2] = z; e[3] = 0.0f;
+    }
+
     // Getter functions to call the components of the tuple easily
     inline float x() const { return e[0]; }
     inline float y() const { return e[1]; }
@@ -117,6 +122,20 @@ inline float magnitude(const MyTuple& a) {
     }
 
     return (sqrt(sqrd(a.x()) + sqrd(a.y()) + sqrd(a.z())));
+}
+
+// Function to normalize a vector
+inline MyTuple normalize(const MyTuple& a) {
+    if (a.w() == 1) {
+        throw logic_error("Cannot normalize a point.");
+    }
+
+    return {
+            a.x() / magnitude(a),
+            a.y() / magnitude(a),
+            a.z() / magnitude(a),
+           0.0f
+    };
 }
 
 
