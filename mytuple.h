@@ -103,8 +103,21 @@ inline MyTuple operator/(const MyTuple& a, float s) {
             a.x() / s,
             a.y() / s,
             a.z() / s,
-           0.0f // preserve vector
+              0.0f // preserve vector
     };
 }
+
+// Function to compute the magnitude of a vector
+inline float sqrd (float a) {
+    return a*a;
+}
+inline float magnitude(const MyTuple& a) {
+    if (a.w() == 1) {
+        throw logic_error("Magnitude is normally defined for vectors, not points.");
+    }
+
+    return (sqrt(sqrd(a.x()) + sqrd(a.y()) + sqrd(a.z())));
+}
+
 
 #endif //MYTUPLE_H
