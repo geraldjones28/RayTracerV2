@@ -139,5 +139,29 @@ inline MyTuple normalize(const MyTuple& a) {
     };
 }
 
+inline float dot(const MyTuple& a, const MyTuple& b) {
+    if (a.w() == 1 || b.w() == 1) {
+        throw logic_error("Cannot dot product points.");
+    }
+
+    return (
+             (a.x() * b.x()) +
+             (a.y() * b.y()) +
+             (a.z() * b.z())
+             );
+}
+
+inline MyTuple cross(const MyTuple& a, const MyTuple& b) {
+    if (a.w() == 1 || b.w() == 1) {
+        throw logic_error("Cannot cross product points.");
+    }
+
+    return {
+                (a.y() * b.z()) - (a.z() * b.y()),
+                (a.z() * b.x()) - (a.x() * b.z()),
+                (a.x() * b.y()) - (a.y() * b.x())
+              };
+}
+
 
 #endif //MYTUPLE_H
