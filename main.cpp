@@ -1,9 +1,11 @@
 #include <iostream>
 #include "mytuple.h"
+#include "color.h"
 
 using namespace std;
 
 // Small case test of 'firing projectiles' based on gravity and wind conditions. Using vectors/points
+/*
 struct Projectile {
     MyTuple position; //Point
     MyTuple velocity; //Vector
@@ -26,8 +28,15 @@ Projectile tick(const Environment& env, const Projectile& proj) {
             proj.velocity + env.gravity + env.wind
             };
 }
+*/
 
 int main() {
+
+    Color c = {-0.5, 0.4, 1.7};
+    c.print();
+
+    // Projectile Launcher
+    /*
     MyTuple point = {0,1,0, 1}; // Starts one unit above the ground
     MyTuple vector = {1,1,0}; // 45º upward and to the right
     Projectile p = {point, normalize(vector)};
@@ -36,10 +45,15 @@ int main() {
     MyTuple eWind = {0.01, 0, 0}; // Pushes right
     Environment e = {eGrav, eWind};
 
+    int totalTicks = 0;
+
     while (p.position.y() >= 0) {
         p = tick(e, p);
+        totalTicks++;
         p.position.print();
     };
+    cout << "Total ticks: " << totalTicks << endl;
+    */
 
     return 0;
 }
