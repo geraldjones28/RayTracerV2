@@ -12,11 +12,12 @@ class Canvas {
     // Fixed array containing the width and height of canvas
     float e[2];
 
+    // A Color object storing the color of the canvas
     Color fillColor;
 
     // Default color constructor
     Canvas(float w, float h)
-        : fillColor(Color(0.0f, 0.0f, 0.0f)) {
+        : fillColor(Color(0.0f, 0.0f, 0.0f)) { // Initializing screen color to black
         e[0] = w;
         e[1] = h;
     }
@@ -27,7 +28,7 @@ class Canvas {
 
     // Function to print out all components of Canvas
     void print() const {
-        cout << "width: " << w() << "\nheight: " << h() << "\ncolor: " << fillColor.red() << ", " << fillColor.green() << ", " << fillColor.blue() << "\n";
+        cout << "width: " << w() << "\nheight: " << h() << "\nscreen-color: R: " << fillColor.red() << " | G: " << fillColor.green() << " | B: " << fillColor.blue() << "\n";
     }
 
 };
