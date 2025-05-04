@@ -1,6 +1,7 @@
 #include <iostream>
 #include "mytuple.h"
 #include "color.h"
+#include "canvas.h"
 
 using namespace std;
 
@@ -32,10 +33,8 @@ Projectile tick(const Environment& env, const Projectile& proj) {
 
 int main() {
 
-    Color c1 = {1, 0.2, 0.4};
-    Color c2 = {0.9, 1, 0.1};
-    Color c3 = c1 * c2;
-    c3.print();
+    Canvas c = {10, 20};
+    c.print();
 
     // Projectile Launcher
     /*
