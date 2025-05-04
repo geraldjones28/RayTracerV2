@@ -32,8 +32,10 @@ Projectile tick(const Environment& env, const Projectile& proj) {
 
 int main() {
 
-    Color c = {-0.5, 0.4, 1.7};
-    c.print();
+    Color c1 = {1, 0.2, 0.4};
+    Color c2 = {0.9, 1, 0.1};
+    Color c3 = c1 * c2;
+    c3.print();
 
     // Projectile Launcher
     /*

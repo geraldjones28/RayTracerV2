@@ -25,9 +25,46 @@ class Color {
 
     // Function to print out all components of color
     void print() const {
-      cout << "(Red:" << red() << ", Green:" << green() << ", Blue:" << blue() << ")\n";
+      cout << "Red: " << red() << "\nGreen: " << green() << "\nBlue: " << blue() << "\n";
     }
 
 };
+
+// Function to add two colors together
+inline Color operator+(const Color& a, const Color& b) {
+
+  return {a.red() + b.red(),
+             a.green() + b.green(),
+             a.blue() + b.blue(),
+             };
+}
+
+// Function to subtract two colors from each other
+inline Color operator-(const Color& a, const Color& b) {
+
+  return {a.red() - b.red(),
+             a.green() - b.green(),
+             a.blue() - b.blue(),
+             };
+}
+
+// Function to perform scalar multiplication on a color
+inline Color operator*(const Color& a, const float s) {
+
+  return {
+    a.red() * s,
+    a.green() * s,
+    a.blue() * s,
+  };
+}
+
+// Hadamard product to multiply the corresponding colors of two vectors and form (blend) a new color.
+inline Color operator*(const Color& a, const Color& b) {
+  return {
+          a.red() * b.red(),
+          a.green() * b.green(),
+          a.blue() * b.blue()
+  };
+}
 
 #endif //COLOR_H

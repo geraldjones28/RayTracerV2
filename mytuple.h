@@ -93,13 +93,13 @@ inline MyTuple operator*(const MyTuple& a, float s) {
     return {
         a.x() * s,
         a.y() * s,
-        a.y() * s,
+        a.z() * s,
         0.0f // preserve vector
     };
 }
 
 // Function to perform scalar division on a vector
-inline MyTuple operator/(const MyTuple& a, float s) {
+inline MyTuple operator/(const MyTuple& a, const float s) {
     if (a.w() == 1) {
         throw logic_error("You should not scale a point (w = 1)");
     }
