@@ -34,9 +34,9 @@ Projectile tick(const Environment& env, const Projectile& proj) {
 int main() {
 
     Canvas c = {5, 3};
-    Color c1 = {1.5, 0, 0};
-    Color c2 = {0, 0.5, 0};
-    Color c3 = {-0.5, 0, 1};
+    Color c1 = {1.5, 0, 0}; // Clamped to Pure Red (255)
+    Color c2 = {0, 0.5, 0}; // Clamped to Medium-Dark Green (128)
+    Color c3 = {-0.5, 0, 1}; // Clamped to Pure Blue (255)
 
     write_pixel(c, 0, 0, c1);
     write_pixel(c, 2, 1, c2);

@@ -37,23 +37,29 @@ class Canvas {
     }
 };
 
-inline void write_pixel(Canvas& c, const size_t x, const size_t y, const Color& color) {
-    // Gets the pixel location
-    size_t const pixelLocation = y * c.width() + x;
-
-    if (x < c.width() && y < c.height()) {
-        // This converts (x, y) coordinates into a 1D index inside the canvas’s pixel buffer:
-        c.pixels[pixelLocation] = color;
+// A Function that writes to a specified pixel in canvas a color [0-based]
+inline void write_pixel(Canvas& c, size_t const x, size_t const y, const Color& color) {
+    if (x >= c.width() || y >= c.height()) {
+        cout << "write_pixel: (" << x << ", " << y << ") is out of bounds for canvas ["
+             << c.width() << " x " << c.height() << "]\n";
+        return;
     }
+
+    size_t const pixelLocation = y * c.width() + x;
+    c.pixels[pixelLocation] = color;
 }
-// Returns the color at the specified pixel in the canvas
-inline Color pixel_at(const Canvas& c, const size_t x, const size_t y) {
-    size_t const pixelLocation = y * c.width() + x;
 
-    if (x < c.width() && y < c.height()) {
-        return c.pixels[pixelLocation];
+// A function that returns the color of the pixel in canvas [0-based]
+inline Color pixel_at(const Canvas& c, size_t const x, size_t const y) {
+    if (x >= c.width() || y >= c.height()) {
+        cout << "pixel_at: (" << x << ", " << y << ") is out of bounds for canvas ["
+             << c.width() << " x " << c.height() << "]\n";
+
+        return c.fillColor;  // fallback color
     }
-    return c.fillColor;
+
+    size_t const pixelLocation = y * c.width() + x;
+    return c.pixels[pixelLocation];
 }
 
 // A function that turns my canvas into a PPM file
@@ -64,11 +70,12 @@ inline void canvas_to_ppm(const Canvas& c) {
 
     cout << "\n";
 
-    // Looping thorough pixels in canvas, left to right, top to bottom
+    // Looping thorough pixels in canvas, left to right, top to bottom [0-based]
     for (size_t y = 0; y < c.height(); ++y) {
         for (size_t x = 0; x < c.width(); ++x) {
             size_t const pixelLocation = y * c.width() + x;
 
+            // Get the current pixel to dissect for color
             Color pixel = c.pixels[pixelLocation];
 
             // Clamp to [0, 1] and convert to 0-255
