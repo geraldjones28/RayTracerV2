@@ -33,11 +33,16 @@ Projectile tick(const Environment& env, const Projectile& proj) {
 
 int main() {
 
-    Canvas c = {10, 20};
-    Color red = {1, 0, 0};
-    write_pixel(c, 2, 3, red);
-    Color result = pixel_at(c, 2, 3);
-    result.print();
+    Canvas c = {5, 3};
+    Color c1 = {1.5, 0, 0};
+    Color c2 = {0, 0.5, 0};
+    Color c3 = {-0.5, 0, 1};
+
+    write_pixel(c, 0, 0, c1);
+    write_pixel(c, 2, 1, c2);
+    write_pixel(c, 4, 2, c3);
+
+    canvas_to_ppm(c);
 
     // Projectile Launcher
     /*
