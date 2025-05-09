@@ -35,13 +35,13 @@ Projectile tick(const Environment& env, const Projectile& proj) {
 
 int main() {
 
-    Canvas c = {900, 550};
+    Canvas c = {256, 144};
     Color red = {1.5, 0, 0}; // Clamped to Pure Red (255)
 
     // Projectile Launcher
     MyTuple start = {0,1,0, 1}; // Starts one unit above the ground
     MyTuple vector = {1,1.8,0}; // 45º upward and to the right
-    MyTuple velocity = normalize(vector) * 11.25;
+    MyTuple velocity = normalize(vector) * 5;
     Projectile p = {start, velocity};
 
     MyTuple eGrav = {0,-0.1,0}; // Pulls down
