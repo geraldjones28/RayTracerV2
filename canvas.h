@@ -70,9 +70,9 @@ inline void canvas_to_ppm(const Canvas& c) {
 
     cout << "\n";
 
-    // Looping thorough pixels in canvas, left to right, top to bottom [0-based]
-    for (size_t y = 0; y < c.height(); ++y) {
-        for (size_t x = 0; x < c.width(); ++x) {
+    // Looping through pixels in canvas, left to right, top to bottom [0-based]
+    for (size_t y = 0; y < c.height(); ++y) { // Row
+        for (size_t x = 0; x < c.width(); ++x) { // Column
             size_t const pixelLocation = y * c.width() + x;
 
             // Get the current pixel to dissect for color
